@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+<style>
+    .art_content img{
+        wight: 80%;
+    }
+</style>
+{% block title %} 展示文章 {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row yonghudenglu">
+        <div class="col-md-offset-2 col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title text-center">
+                        {{ article.title }}<br />
+                    </h1>
+                    <div class="text-right">
+                        作者：{{ article.author.nickname }}&nbsp;&nbsp;|&nbsp;
+                        发表时间：{{ article.publishTime }}
+                    </div>
+                </div>
+                <div class="panel-body art_content">
+                    {{  article.content | safe }}<br />
+                </div>
+            </div>
+            <button class="btn btn-default" type="button">
+                <a href="/blog/{{ article.id }}/update_article/">修改文章</a>
+            </button>
+            <button class="btn btn-default" type="button">
+                <a onclick="window.confirm('您确定要删除这篇文章吗？')" href="/blog/{{ article.id }}/delete_article">删除文章</a>
+            </button>
+            <button class="btn btn-default col-md-offset-7">
+                <a href="/blog/index/">返回首页</a>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

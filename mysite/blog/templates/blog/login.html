@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block title %} 登录 {% endblock %}
+{% block content %}
+<!-----------------------------------用户登录-------------------------------------->
+<div class="container">
+    <div class="row yonghudenglu">
+        <div class="col-md-8 col-md-offset-2">
+            <h3><strong>用户登录</strong></h3>
+            <!--<div style="color: red;">{{msg}}</div>-->
+            <!--<div class="alert alert-danger" role="alert">{{msg}}</div>-->
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <strong>{{msg}}</strong>
+            </div>
+
+            <form class="form-horizontal" action="/blog/login/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">账&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" value="{{username}}" name="username" id="username" placeholder="请输入您的账号" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="请输入您的密码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-2">
+                        <a href="#" onclick="changeCode()"><img id="code" src="{% url 'blog:code' %}" alt="验证码" title="点击刷新"></a>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="code" placeholder="请输入左侧验证码">
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">登录</button>
+                </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function changeCode() {
+//            document.getElementById("code").src = "/blog/code?id="+ new Date().getTime()
+        document.getElementById("code").src = "/blog/code?id="+ Math.random()
+    }
+</script>
+<!-----------------------------------登录框-------------------------------------->
+{% endblock %}

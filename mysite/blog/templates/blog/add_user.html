@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block title %} 注册 {% endblock %}
+{% block content %}
+<!-----------------------------------注册界面------------------------------------------>
+<div class="container">
+    <div class="row yonghuzhuce">
+        <div class="col-md-offset-2 col-md-8">
+            <h3><strong>用户注册</strong></h3>
+            <div class="alert alert-danger alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <strong>{{msg}}</strong>
+            </div>
+
+            <form class="form-horizontal" action="/blog/reg/" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="nickname" class="col-sm-2 control-label">昵&nbsp;&nbsp;称&nbsp;&nbsp;</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nickname" id="nickname" placeholder="请输入昵称（支持中英文）" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="col-sm-2 control-label">账&nbsp;&nbsp;号&nbsp;&nbsp;</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="username" id="username" placeholder="请输入账号" autocomplete="off">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="avatar" class="col-sm-2 control-label">用户头像：</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control"  name="avatar" id="avatar" >
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">密&nbsp;&nbsp;码&nbsp;&nbsp;</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="password" id="password1" placeholder="请输入密码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">确认密码</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" name="confirmpwd" id="password2" placeholder="请确认您的密码">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-2">
+                        <a href="#" onclick="changeCode()"><img id="code" src="{% url 'blog:code' %}" alt="验证码" title="点击刷新"></a>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" name="code" placeholder="请输入左侧验证码">
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                    <!--<div class="col-sm-offset-2 col-sm-10">-->
+                        <!--<div class="checkbox">-->
+                            <!--<label>-->
+                                <!--<input type="checkbox"> Remember me-->
+                            <!--</label>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">注册</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function changeCode() {
+//            document.getElementById("code").src = "/blog/code?id="+ new Date().getTime()
+        document.getElementById("code").src = "/blog/code?id="+ Math.random()
+    }
+</script>
+{% endblock %}

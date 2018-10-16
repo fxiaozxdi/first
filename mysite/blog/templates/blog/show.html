@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+
+
+{% block title %} 展示个人信息 {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- 轮播图 -->
+        <div class="col-md-8">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                      <img src="/static/blog/img/articles/1.jpg" alt="...">
+                      <div class="carousel-caption">
+                        欢迎来到六千l博客
+                      </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/blog/img/articles/121.jpg" alt="...">
+                        <div class="carousel-caption">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/blog/img/articles/1234.jpg" alt="...">
+                        <div class="carousel-caption">
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/static/blog/img/articles/1235.jpg" alt="...">
+                        <div class="carousel-caption">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 控制换图按钮 -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">上一张</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">下一张</span>
+                </a>
+            </div>
+        </div>
+        <!-- 广告位 -->
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">博客简介</div>
+                <div class="panel-body">
+                    <p>
+                        三月长，梨花旺。 <br /><br />
+                        犁牛行，农夫忙。 <br /><br />
+                        一朝铁蹄来，一朝金戈响。 <br /><br />
+                        入伍行，作兵将。 <br /><br />
+                        三年征夫死，十年将军苍。 <br /><br />
+                        同袍问，何处是故乡。 <br /><br />
+                        你莫哭，你莫慌。 <br /><br />
+                        且饮一杯酒，且进一寸枪。 <br /><br />
+                        你应他，此身葬处是故乡。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">博主信息</div>
+                <ul class="list-group">
+                    <li class="list-group-item" style="text-align: center">
+                        <img src="/static/img/default.png" width="100" height="100" alt="..." class="img-circle">
+                    </li>
+                    <li class="list-group-item">
+                        <a href="#">博客首页</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/blog/list_user/">查看所有用户</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/blog/show_all_articles/">查看所有文章</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a href="/blog/add_article/">发表文章</a>
+                    </li>
+                </ul>
+        </div>
+    </div>
+
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-heading">用户信息展示</div>
+            <div class="panel-body">
+                <table class="table table-bordered table-hover table-striped">
+                    <thead>
+                    <tr>
+                        <td colspan="2">用户信息展示--{{user.nickname}}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>用户账号：</td>
+                            <td>{{ user.name }}</td>
+                        </tr>
+                        <tr>
+                            <td>用户昵称：</td>
+                            <td>{{ user.nickname }}</td>
+                        </tr>
+                        <tr>
+                            <td>用户年龄：</td>
+                            <td>{{ user.age }}</td>
+                        </tr>
+                        <tr>
+                            <td>用户生日：</td>
+                            <td>{{ user.birthday }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-------------------------------------个人中心----------------------------------------------->
+
+{% endblock %}

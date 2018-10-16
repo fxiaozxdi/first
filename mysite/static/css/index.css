@@ -1,0 +1,17 @@
+body{
+    padding-top: 70px;
+}
+.msg{
+    font-size:8px;
+    font-weight:100;
+    padding:1px 3px;
+}
+.img-touxiang{
+    width:50px;
+    height:50px;
+}
+.text-nickname h4{
+    /*float: right;*/
+    /*margin-top:-8px;*/
+    font-size:16px;
+}

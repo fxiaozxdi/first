@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客首页--{% block title %}首页{% endblock %}</title>
+    <link rel="stylesheet" href="/static/js/lib/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="/static/js/lib/jquery2.2.4/jquery-2.2.4.min.js"></script>
+    <script src="/static/js/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/static/css/index.css">
+</head>
+<body>
+<!--
+    网页头部导航条
+-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">六千l</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'blog:index' %}"><i class="glyphicon glyphicon-home"></i>
+                    首页
+                    <span class="sr-only">(current)</span></a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-user"></i> 个人中心</a></li>
+                <li><a href="#"><i class="glyphicon glyphicon-comment"></i> 消息 <i class="label label-danger">10</i></a></li>
+            </ul>
+            <form class="navbar-form navbar-left">
+                <div class="form-group">
+                <input type="text" class="form-control" placeholder="请输入关键字">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+
+
+                {% if request.session.loginUser %}
+                    <li><a href="#"> 欢迎您&nbsp;&nbsp;{{ request.session.loginUser.nickname }}</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-wrench"></i> 设置 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{% url 'blog:add_article' %}">发表文章</a></li>
+                            <li><a href="{% url 'blog:show_all_articles' %}">查看所有文章</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'blog:list_user' %}">查看所有用户</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">忘记密码</a></li>
+                            <li><a href="{% url 'blog:update_pwd' %}">修改密码</a></li>
+                            <li><a href="{% url 'blog:reg' %}"> 注册新用户</a></li>
+                            <li><a href="#"></a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{% url 'blog:login' %}">切换用户</a></li>
+                            <li><a href="{% url 'blog:logout' %}">退出登录</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li><a href="{% url 'blog:reg' %}"> 注册</a></li>
+                    <li><a href="{% url 'blog:login' %}"> 登录</a></li>
+                {% endif %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!--
+    网页主体
+ -->
+{% block content %}
+{% endblock %}
+
+<!--
+    网页页脚: 网站备案信息+友情链接
+ -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-inline">
+                <li><a href="#" class="text-muted">起点中文网</a></li>
+                <li><a href="#" class="text-muted">纵横中文网</a></li>
+                <li><a href="#" class="text-muted">创世中文网</a></li>
+                <li><a href="#" class="text-muted">晋江文学城</a></li>
+                <li><a href="#" class="text-muted">云起书院</a></li>
+                <li><a href="#" class="text-muted">潇湘书院</a></li>
+                <li><a href="#" class="text-muted">17k小说网</a></li>
+                <li><a href="#" class="text-muted">小说阅读网</a></li>
+                <li><a href="#" class="text-muted">红袖添香</a></li>
+                <li><a href="#" class="text-muted">掌阅小说网</a></li>
+                <li><a href="#" class="text-muted">阿里文学网</a></li>
+                <li><a href="#" class="text-muted">知轩藏书</a></li>
+                <li><a href="#" class="text-muted">笔趣阁</a></li>
+            </ul>
+            <ul class="list-inline">
+                <li><a href="#" class="text-muted">新浪微博</a></li>
+                <li><a href="#" class="text-muted">CSDN</a></li>
+                <li><a href="#" class="text-muted">百度一下</a></li>
+                <li><a href="#" class="text-muted">哔哩哔哩动画</a></li>
+                <li><a href="#" class="text-muted">知乎</a></li>
+                <li><a href="#" class="text-muted">简书</a></li>
+                <li><a href="#" class="text-muted">腾讯</a></li>
+                <li><a href="#" class="text-muted">阿里巴巴</a></li>
+                <li><a href="#" class="text-muted">360</a></li>
+                <li><a href="#" class="text-muted">网易新闻</a></li>
+                <li><a href="#" class="text-muted">天涯论坛</a></li>
+                <li><a href="#" class="text-muted">3DM论坛</a></li>
+                <li><a href="#" class="text-muted">游侠网</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 text-muted">
+            <p>
+                版权所有&copy;翻版必究
+            </p>
+            <p>
+                增值电信业务经营许可证B2-2009108  电信与信息服务业务经营许可证000007号
+            </p>
+            <p>
+                广播电视节目制作经营许可证（京）字第828号  甲测资字1100078 京公网安备11000002000016号
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
